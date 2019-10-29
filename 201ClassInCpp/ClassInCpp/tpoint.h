@@ -14,11 +14,13 @@ enum TPointType {
 };
 
 class TPoint :public TGeom {
-public:
+private:
 	TPointType typ;
-	int selected;
+public:
 	TPoint();
-	virtual void Print();
+	virtual TPointType getTyp();
+	virtual void setTyp(const TPointType TYP);
+	virtual char getSymb();
 };
 
 #endif

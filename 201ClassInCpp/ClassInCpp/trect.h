@@ -4,11 +4,17 @@
 #include "tgeom.h"
 
 class TRect :public TGeom {
-public:
+private:
 	short height;
 	short width;
+public:
 	TRect();
 	virtual ~TRect();
+	virtual short getHeight();
+	virtual void setHeight(const short HEIGHT);
+	virtual short getWidth();
+	virtual void setWidth(const short WIDTH);
+	virtual void setBounds(const short X, const short Y, const short HEIGHT, const short WIDTH);
 	virtual void InitTest();
 	virtual int Contains(const short X, const short Y);
 	virtual void Print();

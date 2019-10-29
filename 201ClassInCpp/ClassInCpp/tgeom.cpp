@@ -20,6 +20,61 @@ TGeom::~TGeom() {
 //	free(name);
 }
 
+int TGeom::getX() {
+	return x;
+};
+
+void TGeom::setX(const int X) {
+	if (X != x) {
+		Erase();
+		x = X;
+	}
+};
+
+int TGeom::getY() {
+	return y;
+};
+
+void TGeom::setY(const int Y) {
+	if (Y != y) {
+		Erase();
+		y = Y;
+	}
+};
+
+char TGeom::getSymb() {
+	return symb;
+};
+
+void TGeom::setSymb(const char SYMB) {
+	if (SYMB != symb) {
+		Erase();
+		symb = SYMB;
+	}
+};
+
+ConsoleColors TGeom::getColor() {
+	return color;
+};
+
+void TGeom::setColor(const ConsoleColors COLOR) {
+	if (COLOR != color) {
+		Erase();
+		color = COLOR;
+	}
+};
+
+ConsoleColors TGeom::getBgColor() {
+	return bgcolor;
+};
+
+void TGeom::setBgColor(const ConsoleColors BGCOLOR) {
+	if (BGCOLOR != bgcolor) {
+		Erase();
+		bgcolor = BGCOLOR;
+	}
+};
+
 void TGeom::InitTest() {
 	x = rand() % consoleSizeX() + 1;
 	y = rand() % consoleSizeY() + 1;
@@ -36,14 +91,14 @@ void TGeom::InitTest() {
 };
 
 void TGeom::Print() {
-	consoleSetColors(color, bgcolor);
-	consoleGotoXY(x, y);
-	printf("%c", symb);
+	consoleSetColors( getColor(), getBgColor() );
+	consoleGotoXY( getX(), getY() );
+	printf("%c", getSymb() );
 }
 
 void TGeom::Erase() {
 	consoleSetColors(clBlack, clBlack);
-	consoleGotoXY(x, y);
+	consoleGotoXY(getX(), getY());
 	printf(" ");
 }
 

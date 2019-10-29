@@ -7,28 +7,30 @@
 
 TPoint::TPoint() {
 	TGeom::TGeom();
-	symb = '.';
-	switch (rand() % 4) {
-		case 0: typ = ptBank;    break;
-		case 1: typ = ptHouse;   break;
-		case 2: typ = ptCafe;    break;
-		case 3: typ = ptShop;    break;
-	}
-	selected = 0;
+	setSymb('.');
 	strcpy_s(name, defaultNameLength, "TPoint");
 }
 
-void TPoint::Print() {
-	char s = symb;
-	switch (typ){
-	    case ptBank : { s = 'B'; break; }
-	    case ptHouse: { s = 'H'; break; }
-	    case ptCafe : { s = 'C'; break; }
-	    case ptShop : { s = 'S'; break; }
-	    case ptTank : { s = 'T'; break; }
-		case ptPen  : { s = ' '; break; }
+TPointType TPoint::getTyp() {
+	return typ;
+};
+
+void TPoint::setTyp(const TPointType TYP) {
+	if (TYP != typ) {
+		Erase();
+		typ = TYP;
 	}
-	consoleSetColors(color, bgcolor);
-	consoleGotoXY(x, y);
-	printf("%c", s);
-}
+};
+
+char TPoint::getSymb() {
+	char s = TGeom::getSymb();
+	switch (getTyp()) {
+	   case ptBank : { s = 'B'; break; }
+	   case ptHouse: { s = 'H'; break; }
+	   case ptCafe : { s = 'C'; break; }
+	   case ptShop : { s = 'S'; break; }
+	   case ptTank : { s = 'T'; break; }
+	   case ptPen  : { s = ' '; break; }
+	}
+	return s;
+};
