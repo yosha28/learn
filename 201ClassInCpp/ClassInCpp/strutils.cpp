@@ -14,8 +14,9 @@ void nullStr(char *str, int count) {
 char *parseItem(char *fromChar, const char delimiter, char *parsedItem) {
 	nullStr(parsedItem, defaultNameLength);
 	char *result = NULL;
-	if (NULL != fromChar) {
-		result = strstr(fromChar, &delimiter);
+	if (NULL != fromChar)
+	{
+		result=strchr(fromChar,delimiter);//именила strstr ,у меня она не хотела работать никак
 		if (NULL != result) {
 			for (int i = 0; i < (result - fromChar); i++) {
 				*(parsedItem + i) = *(fromChar + i);
