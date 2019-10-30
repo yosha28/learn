@@ -126,7 +126,7 @@ list2 *list2_loadfromfile(list2 *list, const char *filename) {
 			if ('\n' == *work) {
 				parseItem(buffer, '|', objname);
 				item = list2_ins(item);
-				if (0 == strcmp(objname, "TGEOM")) {
+				if (0 == strcmp(objname, "TPOIN")) {
 					item->geom = new TPoint();
 				}else if (0 == strcmp(objname, "TRECT")) {
 					item->geom = new TRect();
@@ -145,7 +145,7 @@ list2 *list2_loadfromfile(list2 *list, const char *filename) {
 		if( (work != buffer) && (0 < strlen(buffer)) ){
 			parseItem(buffer, '|', objname);
 			item = list2_ins(item);
-			if (0 == strcmp(objname, "TGEOM")) {
+			if (0 == strcmp(objname, "TPOIN")) {
 				item->geom = new TPoint();
 			}else if (0 == strcmp(objname, "TRECT")) {
 				item->geom = new TRect();

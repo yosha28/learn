@@ -21,6 +21,8 @@ public:
 	virtual TPointType getTyp();
 	virtual void setTyp(const TPointType TYP);
 	virtual char getSymb();
+	virtual void SaveToFile(FILE *fileHandle);
+	virtual int LoadFromStr(char *buffer);
 };
 
 #endif
